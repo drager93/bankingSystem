@@ -1,0 +1,23 @@
+@import "../variable.scss";
+
+@include device-desktop() {
+  .hided {
+    display: none !important;
+  }
+}
+
+@include device-tablet() {
+  .hidet {
+    display: none !important;
+  }
+}
+
+@include device-mobile() {
+  .hidem {
+    display: none !important;
+  }
+}
+
+.hide {
+  display: none !important;
+}

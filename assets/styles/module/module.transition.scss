@@ -1,0 +1,15 @@
+@import "../import.scss";
+
+.list {
+  transition: all 1s;
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter, .list-leave-to
+/* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-leave-active {
+  position: absolute;
+}

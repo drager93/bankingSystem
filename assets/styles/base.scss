@@ -1,0 +1,97 @@
+html {
+  font-size: $default-font-size;
+  font-weight: $default-font-weight;
+  height: auto;
+  @include device-mobile() {
+    font-size: $mobile-font-size;
+  }
+  @include device-tablet() {
+    font-size: $tablet-font-size;
+  }
+  body {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1;
+    color: $oc-gray-9;
+    margin: 0px;
+    padding: 0px;
+
+    //  background: linear-gradient(-135deg, $body-bg, darken($body-bg, 7));
+    background: $body-bg;
+    color: #414144;
+    //  font-family: 'Noto Sans KR', sans-serif !important;
+    font-family: "Noto Sans", "Noto Sans KR", sans-serif !important;
+    overflow-x: auto !important;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+      left: calc(100% - 5px);
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border: none;
+      background: #f0f1f1;
+      border-radius: 10px;
+    }
+
+    &.hidden {
+      overflow: hidden;
+    }
+
+    article {
+      width: $content-max-width;
+      margin: 0px auto;
+      @include device-lte-tablet() {
+        width: 100%;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        transition: 0.3s;
+        color: $main-color;
+        text-decoration: none;
+
+        s {
+          transition: 0.3s;
+          color: $main-color;
+        }
+      }
+    }
+
+    .hand,
+    .pointer {
+      cursor: pointer;
+    }
+  }
+
+  input,
+  textarea {
+    box-sizing: border-box;
+    font-size: $default-font-size;
+  }
+
+  div {
+    box-sizing: border-box;
+
+    &.shadow {
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+    }
+    & .error-message {
+      color: red;
+      font-size: 12px;
+    }
+  }
+}

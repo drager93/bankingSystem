@@ -1,0 +1,102 @@
+@import "../variable.scss";
+
+.flex,
+[flex] {
+  display: flex;
+  -ms-flex: 0 1 auto;
+  flex-wrap: wrap;
+  line-height: normal;
+  > * {
+    line-height: normal;
+  }
+  @for $max from 1 through 12 {
+    > [row="#{$max}"] {
+      flex: $max 0 auto;
+    }
+  }
+  // @for $d from 1 through length($device-name) {
+  //    @media (min-width: nth($device-size,$d)) and (max-width: nth($device-size,$d+1) + 1px) {
+  //       @for $max from 1 through 12 {
+  //          > [row="#{$max}"] {
+  //             flex: $max 0 auto;
+  //          }
+  //       }
+  //    }
+  // }
+
+  &[f-dir="column"],
+  &[fdc] {
+    flex-direction: column;
+    clear: ie9(both);
+  }
+  &[f-dir="row"],
+  &[fdr] {
+    flex-direction: row;
+  }
+
+  &[f-jus="start"],
+  &[fjs] {
+    justify-content: flex-start;
+  }
+  &[f-jus="end"],
+  &[fje] {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  &[f-jus="center"],
+  &[fjc] {
+    justify-content: center;
+    text-align: center;
+  }
+  &[f-jus="between"],
+  &[fjb] {
+    justify-content: space-between;
+  }
+
+  &[f-items="start"],
+  &[fis] {
+    align-items: flex-start;
+  }
+  &[f-items="end"],
+  &[fie] {
+    align-items: flex-end;
+  }
+  &[f-items="center"],
+  &[fic] {
+    align-items: center;
+    vertical-align: ie9(middle);
+  }
+  &[f-items="base"],
+  &[fib] {
+    align-items: baseline;
+  }
+  &[f-items="stretch"],
+  &[fist] {
+    align-items: stretch;
+  }
+
+  &[f-self="stretch"],
+  &[fsst] {
+    align-self: stretch;
+  }
+  &[f-self="center"],
+  &[fsc] {
+    align-self: center;
+  }
+  &[f-self="start"],
+  &[fss] {
+    align-self: start;
+  }
+  &[f-self="end"],
+  &[fse] {
+    align-self: end;
+  }
+  &[fnw] {
+    flex-wrap: nowrap;
+  }
+}
+
+.fnw,
+[fnw] {
+  flex-wrap: nowrap;
+}

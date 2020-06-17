@@ -12,11 +12,34 @@ export default {
     ]
   },
   loading: { color: "#3B8070" },
-  css: ["~/assets/css/main.css"],
-  build: {},
+  css: [{ src: "ant-design-vue/dist/antd.less", lang: "less" }, "~/assets/styles/index.css"],
+  build: {
+    postcss: {
+      plugins: {
+        "postcss-preset-env": {
+          autoprefixer: {
+            grid: true,
+          },
+        },
+      },
+    },
+    loaders: {
+      less: {
+        javascriptEnabled: true,
+        modifyVars: {
+          "primary-color": "RGB(88,86,120)",
+          "layout-header-background": "RGB(67,66,93)",
+          "border-radius-base": "0px",
+        },
+      },
+    },
+  },
   buildModules: ["@nuxt/typescript-build"],
   modules: [
     "@nuxtjs/axios",
+  ],
+  plugins: [
+    "~/plugins/antd",
   ],
   axios: {}
 }

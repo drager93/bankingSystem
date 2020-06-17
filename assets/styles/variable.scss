@@ -1,0 +1,67 @@
+@import "./lib/open-color.scss";
+
+$colors: (
+  // dusky: #43425d,
+  // white: #f5f5f5,
+  // white-three: #d8d8d8,
+  // dodger-blue: #3b86ff,
+  // gunmetal: #4d4f5c,
+  // gunmetal-two: #4d565c,
+  // periwinkle-blue: #a3a0fb,
+  // apricot: #ffc06a,
+  // pale-grey: #f5f6fa,
+  // pale-grey-two: #e8e9ec,
+  // cool-grey-two: #a3a6b4,
+  // coral: #ff4141,
+  // greenish-teal: #3cc480,
+  // silver: #dee1e5,
+  // greyish: #a4a3a2,
+  // greyish-brown: #555555,
+  // steel: #808495,
+);
+
+// $main-color: map-get($colors, dusky);
+$default-font: "Noto Sans", "Noto Sans KR", sans-serif !important;
+
+$shadow-color: rgba(106, 101, 247, 0.15);
+$box-shadow: 0px 3px 20px $shadow-color;
+
+// 변수
+$body-bg: #f2f4f6;
+//$footer-background: #727071;
+
+$content-max-width: 1280px;
+$fullsize-min-width: 1920px;
+
+$default-font-size: 13px;
+$tablet-font-size: 13px;
+$mobile-font-size: 13px;
+
+$default-font-weight: 600;
+
+$default-border-color: rgba(0, 0, 0, 0.05);
+
+//$mobile-footer-height: 70px;
+
+$on-black-op-text: rgba(255, 255, 255, 0.33);
+$on-white-op-text: rgba(128, 128, 128, 0.5);
+
+$vector: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$device-name: (m, t, d);
+$device-size: (0px, 576px, 1025px, 65535px);
+
+// 글자 쉐도우
+$ws: rgba(255, 255, 255, 0.75);
+$bs: rgba(0, 0, 0, 0.75);
+$header-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+//myPage-layout
+$my-page-header-height: 70px;
+$my-page-navigation-width: 250px;
+
+//임시

@@ -1,0 +1,193 @@
+@import "./variable.scss";
+@import "./mixin/mixin.device.scss";
+
+//ant-input
+.ant-input {
+  &.base-input {
+    padding: 14px 13px;
+    height: auto;
+    border: 1px solid map-get($colors, silver);
+    border-radius: 5px;
+  }
+}
+
+.ant-input-search {
+  .ant-input {
+    border-style: none;
+    border-bottom: 1px solid #707070;
+  }
+}
+
+//ant-pagination
+.ant-pagination {
+  .ant-pagination-item-active {
+    background-color: $main-color;
+    a {
+      color: white;
+    }
+    &:hover {
+      a {
+        color: white;
+      }
+    }
+    &:focus {
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+// ant-button
+.ant-btn {
+  &.submit-button {
+    background-color: $main-color;
+    color: white;
+    width: 120px;
+    height: 40px;
+    border-radius: 2px;
+
+    [disabled],
+    &.disabled {
+      background-color: #f5f5f5;
+      color: #dfccb8;
+    }
+  }
+
+  &.refuse-button {
+    color: $main-color;
+    width: 120px;
+    height: 40px;
+    border-radius: 2px;
+
+    [disabled],
+    &.disabled {
+      background-color: #f5f5f5;
+      color: #dfccb8;
+    }
+  }
+}
+
+//ant-checkbox
+.ant-checkbox-wrapper {
+  .ant-checkbox-checked {
+    .ant-checkbox-inner {
+      background-color: $main-color;
+      border-color: $main-color;
+    }
+  }
+}
+
+//ant-modal
+.ant-modal {
+  .ant-modal-content {
+    .ant-modal-close {
+      background-color: none;
+
+      &:hover {
+        background: none;
+        border-style: none;
+      }
+
+      .ant-modal-close-x {
+        height: 49px;
+        width: 49px;
+        line-height: 49px;
+        color: map-get($colors, white);
+
+        &:hover {
+          background-color: none;
+          border-style: none;
+        }
+      }
+    }
+  }
+
+  .ant-modal-header {
+    padding: 15px 15px 14px 15px;
+    background-color: $main-color;
+
+    .ant-modal-title {
+      color: map-get($colors, white);
+      font-size: 18px;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 0;
+  }
+}
+
+//vue-daum-postCode
+.vue-daum-postcode {
+  overflow: scroll;
+  height: 400px;
+}
+
+//ant-upload
+.ant-upload.ant-upload-select-picture-card {
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+
+  .upload-preview {
+    max-width: 100%;
+  }
+}
+
+//ant-popConfirm
+.ant-popover,
+.ant-popover-placement-leftBottom {
+  min-width: 250px;
+
+  .ant-popover-buttons {
+    text-align: center;
+
+    .ant-btn,
+    .ant-btn-sm {
+      margin-right: 5px;
+      width: 40%;
+    }
+
+    .ant-btn,
+    .ant-btn-sm {
+      margin-right: 5px;
+      width: 40%;
+    }
+  }
+}
+
+//ant-calendar
+.ant-fullcalendar-header {
+  display: flex;
+}
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-month,
+.ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-date {
+  // background: #8b9294;
+  background-color: $main-color;
+}
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-value,
+.ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-value {
+  color: white;
+}
+
+.ant-radio-button-wrapper {
+  display: none;
+}
+
+//ant-spin
+.ant-spin-nested-loading {
+  width: 100%;
+
+  > div {
+    > .ant-spin {
+      height: 100%;
+      min-height: 100%;
+      max-height: 100%;
+    }
+  }
+}
