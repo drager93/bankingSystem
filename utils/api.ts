@@ -25,103 +25,123 @@ class Api {
     return baseURL;
   }
 
-  private static ResponsePayload(res: any): Types.Response {
-    if (res.data && res.data.status) {
-      return res.data;
-    } else {
-      return {
-        status: res.status,
-        code: 200,
-        data: res.data.data,
-      };
-    }
-  }
-  private static ErrorPayload(err: any): Types.Response {
-    if (err.response && err.response.status != 200) {
-      return {
-        status: false,
-        code: err.response.status,
-        //[${err.response.statusText}] ${err.message}
-        data: `${err.response.data.data}`,
-      };
-    } else {
-      return err.response.data;
-    }
-  }
-  public static async get(uri: string, params?: any, headers?: any) {
-    try {
-      const res = await instance.get(`${uri}`, { params, headers });
-      return Api.ResponsePayload(res);
-    } catch (err) {
-      return Api.ErrorPayload(err);
-    }
+  public static async get(url: string, params?: { [k: string]: string }) {
+    return await instance.get(url, { params });
   }
 
-  public static async post(uri: string, data?: any, headers?: any) {
-    try {
-      const res = await instance.post(`${uri}`, data, { headers });
-      return Api.ResponsePayload(res);
-    } catch (err) {
-      return Api.ErrorPayload(err);
-    }
+  public static async post(url: string, data: any) {
+    return await instance.post(url, data);
   }
 
-  public static async put(uri: string, data?: any, headers?: any) {
-    try {
-      const res = await instance.put(`${uri}`, data, { headers });
-      return Api.ResponsePayload(res);
-    } catch (err) {
-      return err;
-    }
+  public static async delete(url: string, id?: Object) {
+    return await instance.delete(url, id);
   }
 
-  public static async del(uri: string, params?: any, headers?: any) {
-    try {
-      const res = await instance.delete(`${uri}`, { params, headers });
-      return Api.ResponsePayload(res);
-    } catch (err) {
-      return err;
-    }
+  public static async patch(id: string, data?: any) {
+    return await instance.patch(id, data);
   }
 
-  public static async formPost(uri: string, data: any, auto: boolean = true) {
-    try {
-      let formData = new FormData();
-      if (auto) {
-        for (var key in data) {
-          if (Array.isArray(key)) {
-            formData.append(`${key}[]`, JSON.stringify(data[key]));
-          } else {
-            formData.append(key, data[key]);
-          }
-        }
-      } else {
-        formData = data;
-      }
-      return Api.post(uri, formData, { "Content-Type": "multipart/form-data" });
-    } catch (err) {
-      return err;
-    }
+  public static async put(url: string, data: string) {
+    return await instance.put(url, data);
   }
-  public static async formPut(uri: string, data: any, auto: boolean = true) {
-    try {
-      let formData = new FormData();
-      if (auto) {
-        for (var key in data) {
-          if (Array.isArray(key)) {
-            formData.append(`${key}[]`, JSON.stringify(data[key]));
-          } else {
-            formData.append(key, data[key]);
-          }
-        }
-      } else {
-        formData = data;
-      }
-      return Api.put(uri, formData, { "Content-Type": "multipart/form-data" });
-    } catch (err) {
-      return err;
-    }
-  }
+
+  // private static ResponsePayload(res: any): Types.Response {
+  //   if (res.data && res.data.status) {
+  //     return res.data;
+  //   } else {
+  //     return {
+  //       status: res.status,
+  //       code: 200,
+  //       data: res.data.data,
+  //     };
+  //   }
+  // }
+  // private static ErrorPayload(err: any): Types.Response {
+  //   if (err.response && err.response.status != 200) {
+  //     return {
+  //       status: false,
+  //       code: err.response.status,
+  //       //[${err.response.statusText}] ${err.message}
+  //       data: `${err.response.data.data}`,
+  //     };
+  //   } else {
+  //     return err.response.data;
+  //   }
+  // }
+  // public static async get(uri: string, params?: any, headers?: any) {
+  //   try {
+  //     const res = await instance.get(`${uri}`, { params, headers });
+  //     return Api.ResponsePayload(res);
+  //   } catch (err) {
+  //     return Api.ErrorPayload(err);
+  //   }
+  // }
+
+  // public static async post(uri: string, data?: any, headers?: any) {
+  //   try {
+  //     const res = await instance.post(`${uri}`, data, { headers });
+  //     return Api.ResponsePayload(res);
+  //   } catch (err) {
+  //     return Api.ErrorPayload(err);
+  //   }
+  // }
+
+  // public static async put(uri: string, data?: any, headers?: any) {
+  //   try {
+  //     const res = await instance.put(`${uri}`, data, { headers });
+  //     return Api.ResponsePayload(res);
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
+
+  // public static async del(uri: string, params?: any, headers?: any) {
+  //   try {
+  //     const res = await instance.delete(`${uri}`, { params, headers });
+  //     return Api.ResponsePayload(res);
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
+
+  // public static async formPost(uri: string, data: any, auto: boolean = true) {
+  //   try {
+  //     let formData = new FormData();
+  //     if (auto) {
+  //       for (var key in data) {
+  //         if (Array.isArray(key)) {
+  //           formData.append(`${key}[]`, JSON.stringify(data[key]));
+  //         } else {
+  //           formData.append(key, data[key]);
+  //         }
+  //       }
+  //     } else {
+  //       formData = data;
+  //     }
+  //     return Api.post(uri, formData, { "Content-Type": "multipart/form-data" });
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
+  // public static async formPut(uri: string, data: any, auto: boolean = true) {
+  //   try {
+  //     let formData = new FormData();
+  //     if (auto) {
+  //       for (var key in data) {
+  //         if (Array.isArray(key)) {
+  //           formData.append(`${key}[]`, JSON.stringify(data[key]));
+  //         } else {
+  //           formData.append(key, data[key]);
+  //         }
+  //       }
+  //     } else {
+  //       formData = data;
+  //     }
+  //     return Api.put(uri, formData, { "Content-Type": "multipart/form-data" });
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
 }
 
 export default Api;

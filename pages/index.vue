@@ -1,18 +1,18 @@
 <template>
-<div class="main-page w12">
-  <div class="mb10" flex fdr fjb fic>
-    <button class="click-content ta-c pt100 pb100 w5" @click="depositVisible = !depositVisible">입금</button>
-    <button class="click-content ta-c pt100 pb100 w5" @click="withdrawVisible = !withdrawVisible">출금</button>
-  </div>
+  <div class="main-page w12">
+    <div class="mb10" flex fdr fjb fic>
+      <button class="click-content ta-c pt100 pb100 w5" @click="depositVisible = !depositVisible">입금</button>
+      <button class="click-content ta-c pt100 pb100 w5" @click="withdrawVisible = !withdrawVisible">출금</button>
+    </div>
 
-  <div class="mb10" flex fdr fjb fic>
-    <button class="click-content ta-c pt100 pb100 w5" @click="transferVisible = !transferVisible">계좌이체</button>
-    <button class="click-content ta-c pt100 pb100 w5" @click="balanceVisible = !balanceVisible">잔액조회</button>
-  </div>
+    <div class="mb10" flex fdr fjb fic>
+      <button class="click-content ta-c pt100 pb100 w5" @click="transferVisible = !transferVisible">계좌이체</button>
+      <button class="click-content ta-c pt100 pb100 w5" @click="balanceVisible = !balanceVisible">잔액조회</button>
+    </div>
 
-  <div class="mb10" flex fdr fjc fic>
-    <button class="click-content ta-c pt100 pb100 w6" @click="tradeVisible = !tradeVisible">거래내역 조회</button>
-  </div>
+    <div class="mb10" flex fdr fjc fic>
+      <button class="click-content ta-c pt100 pb100 w6" @click="tradeVisible = !tradeVisible">거래내역 조회</button>
+    </div>
 
     <a-modal v-model="depositVisible" title="정보입력" @ok="depositOk">
       <div class="pl15 pr15">
@@ -78,7 +78,7 @@
     <a-modal v-model="tradeVisible2" title="거래내역" @ok="tradeList">
       <div class="pt20 pb20 pl15 pr15">
         <div flex fic>
-          <div>{{moment().format("YYYY-MM-DD")}}</div>
+          <div>{{ moment().format("YYYY-MM-DD") }}</div>
           <div>김용연님에게 1000원 계좌이체</div>
         </div>
       </div>
@@ -89,19 +89,16 @@
         총액: 123213123
       </div>
     </a-modal>
-</div>
+  </div>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue
-} from "nuxt-property-decorator"
-import moment from 'moment';
+import { Component, Vue } from "nuxt-property-decorator";
+import moment from "moment";
+import api from "~/utils/api";
 
 @Component({
-  components: {
-  }
+  components: {},
 })
 export default class extends Vue {
   moment: any = moment;
@@ -109,12 +106,12 @@ export default class extends Vue {
   amountVisible: boolean = false;
 
   //입금
-  depositVisible : boolean = false;
+  depositVisible: boolean = false;
   depositVisible2: boolean = false;
   depositMoney: number = 0;
 
   //출금
-  withdrawVisible : boolean = false;
+  withdrawVisible: boolean = false;
   withdrawVisible2: boolean = false;
   withdrawMoney: number = 0;
 
@@ -130,13 +127,18 @@ export default class extends Vue {
   tradeVisible: boolean = false;
   tradeVisible2: boolean = false;
 
+  async mounted() {
+    let res = await api.get("/home");
+    console.log(res);
+  }
+
   depositOk() {
     this.depositVisible = false;
     this.depositVisible2 = true;
   }
 
   depositMoneyOk() {
-    this.$message.info("입금이 완료되었습니다.")
+    this.$message.info("입금이 완료되었습니다.");
     this.depositVisible2 = false;
     this.amountVisible = true;
   }
@@ -147,7 +149,7 @@ export default class extends Vue {
   }
 
   withdrawMoneyOk() {
-    this.$message.info("출금이 완료되었습니다.")
+    this.$message.info("출금이 완료되었습니다.");
     this.withdrawVisible2 = false;
     this.amountVisible = true;
   }
@@ -163,7 +165,7 @@ export default class extends Vue {
   }
 
   transferMoney() {
-    this.$message.info("이체가 완료되었습니다.")
+    this.$message.info("이체가 완료되었습니다.");
     this.transferVisible3 = false;
     this.amountVisible = true;
   }
@@ -183,7 +185,7 @@ export default class extends Vue {
   }
 
   amountOk() {
-    this.amountVisible = false
+    this.amountVisible = false;
   }
 }
 </script>
